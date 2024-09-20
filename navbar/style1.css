@@ -1,50 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
 }
-
 body {
     background-color: #f4f4f4;
 }
-
 .header {
     background-color: #007BFF; /* Blue background */
     padding: 1rem 0;
     border-bottom: 1px solid #E2E8F0;
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
 }
-
 .nav-logo {
     text-decoration: none;
     font-size: 2.4rem;
     font-weight: 700;
     color: white;
 }
-
 .nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
 }
-
 .nav-item {
     margin-left: 3rem;
 }
-
 /* For the nav link underline effect */
 .nav-link {
     font-size: 1.8rem;
@@ -56,7 +47,6 @@ body {
     border: 2px solid transparent; /* Initial state with no border */
     border-radius: 5px; /* Rounded corners for button effect */
 }
-
 /* Underline effect */
 .nav-link::after {
     content: '';
@@ -68,17 +58,14 @@ body {
     background-color: white; /* Red underline */
     transition: width 0.6s ease; /* Slower underline animation */
 }
-
 /* On hover, underline expands and button animation is added */
 .nav-link:hover::after {
     width: 100%;
 }
-
 /* Active link keeps the underline */
 .nav-link.active::after {
     width: 100%;
 }
-
 /* Button animation on hover: background color and smooth scale effect */
 .nav-link:hover {
     background-color: white; /* Button turns red on hover */
@@ -88,7 +75,6 @@ body {
     border-radius: 5px; /* Ensure the button remains rounded */
     transition: all 0.6s ease; /* Slower hover effect */
 }
-
 /* Active state styling for nav links */
 .nav-link.active {
     background-color: white; /* Red background for active link */
@@ -96,13 +82,11 @@ body {
     border-color: white; /* Red border for active link */
     border-radius: 5px;
 }
-
 /* Hamburger menu styles */
 .hamburger {
     display: none;
     cursor: pointer;
 }
-
 .bar {
     display: block;
     width: 25px;
@@ -111,7 +95,6 @@ body {
     background-color: white;
     transition: 0.3s;
 }
-
 /* Media query for mobile view */
 @media (max-width: 768px) {
     .nav-menu {
@@ -128,19 +111,16 @@ body {
         z-index: 999;
         overflow: hidden; /* Ensure content doesn't spill over */
     }
-
     .nav-menu.active {
         right: 0; /* Slide into view */
         margin-top: 65px;
         margin-right: 15px;
     }
-
     .nav-item {
         margin: 1.5rem 0;
         opacity: 0; /* Initially hidden */
         animation: fadeIn 0.5s forwards; /* Fade-in animation */
     }
-
     .nav-menu.active .nav-item {
         opacity: 1; /* Fade-in when active */
     }
@@ -148,20 +128,16 @@ body {
     .hamburger {
         display: block;
     }
-
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
-
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
 }
-
 /* Fade-in keyframes */
 @keyframes fadeIn {
     from {
@@ -180,7 +156,6 @@ body {
         width: 100%; /* Full width for mobile */
         right: -100%; /* Start off-screen from the right */
     }
-
     .nav-menu.active {
         right: 0; /* Slide into view */
         margin-top: 50px;
