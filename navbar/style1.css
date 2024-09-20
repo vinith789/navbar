@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #007BFF; /* Blue background */
+    padding: 1rem 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    text-decoration: none;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-item {
+    margin-left: 3rem;
+}
+
+/* For the nav link underline effect */
+.nav-link {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    position: relative;
+    transition: all 0.6s ease; /* Slower transition */
+    border: 2px solid transparent; /* Initial state with no border */
+    border-radius: 5px; /* Rounded corners for button effect */
+}
+
+/* Underline effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white; /* Red underline */
+    transition: width 0.6s ease; /* Slower underline animation */
+}
+
+/* On hover, underline expands and button animation is added */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Active link keeps the underline */
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Button animation on hover: background color and smooth scale effect */
+.nav-link:hover {
+    background-color: white; /* Button turns red on hover */
+    color: green; /* Keep white text */
+    border: 2px solid white; /* Add a red border on hover */
+    transform: scale(1.1); /* Slightly scale up the button for effect */
+    border-radius: 5px; /* Ensure the button remains rounded */
+    transition: all 0.6s ease; /* Slower hover effect */
+}
+
+/* Active state styling for nav links */
+.nav-link.active {
+    background-color: white; /* Red background for active link */
+    color: green; /* White text for active link */
+    border-color: white; /* Red border for active link */
+    border-radius: 5px;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 20px; /* Gap from the top */
+        right: -50%; /* Start off-screen */
+        width: 50%; /* Set width to 50% */
+        height: 300px; /* Set height to 300px */
+        background-color: rgba(0, 123, 255, 0.7); /* Blue transparent background */
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px; /* Gap around content */
+        transition: all 0.5s ease; /* Smooth animation for position */
+        z-index: 999;
+        overflow: hidden; /* Ensure content doesn't spill over */
+    }
+
+    .nav-menu.active {
+        right: 0; /* Slide into view */
+        margin-top: 65px;
+        margin-right: 15px;
+    }
+
+    .nav-item {
+        margin: 1.5rem 0;
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 0.5s forwards; /* Fade-in animation */
+    }
+
+    .nav-menu.active .nav-item {
+        opacity: 1; /* Fade-in when active */
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Slight upward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move to its final position */
+    }
+}
+
+/* Media query for screens 480px and below */
+@media screen and (max-width: 480px) {
+    .nav-menu {
+        width: 100%; /* Full width for mobile */
+        right: -100%; /* Start off-screen from the right */
+    }
+
+    .nav-menu.active {
+        right: 0; /* Slide into view */
+        margin-top: 50px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}

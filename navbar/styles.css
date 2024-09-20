@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #007BFF; /* Blue background */
+    padding: 1rem 0;
+    border-bottom: 1px solid #E2E8F0;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    text-decoration: none;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-item {
+    margin-left: 3rem;
+}
+
+/* For the nav link underline effect */
+.nav-link {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Simple underline on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: whitesmoke; /* You can change this color if needed */
+    transition: width 0.3s ease;
+}
+
+/* On hover, the underline expands */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* For the active link, the underline is always visible */
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: 0.3s;
+}
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
+    /* Hamburger styling */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .hamburger .bar {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+        transition: all 0.3s ease;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    /* Navbar hidden initially */
+    .nav-menu {
+        position: fixed;
+        top: 20px; /* Gap from the top */
+        right: -50%; /* Start off-screen */
+        width: 50%; /* Set width to 50% */
+        background-color: rgba(0, 123, 255, 0.7); /* Blue transparent background */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px; /* Gap around content */
+        transition: all 0.5s ease; /* Smooth animation for position and height */
+        transform: translateY(-20px); /* Initial position slightly up */
+        z-index: 999;
+        overflow: hidden; /* Ensure content doesn't spill over */
+    }
+
+    /* Navbar active state */
+    .nav-menu.active {
+        right: 0; /* Slide into view */
+        margin-right: 15px;
+        margin-top: 65px;
+        height: 300px; /* Expand height */
+        transform: translateY(0); /* Move to its original position */
+        animation: slideDown 0.5s ease; /* Slide down animation */
+    }
+
+    /* Navbar items */
+    .nav-item {
+        margin: 1.5rem 0;
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 0.5s forwards; /* Fade-in animation */
+    }
+
+    .nav-menu.active .nav-item {
+        opacity: 1; /* Fade-in when active */
+        animation: fadeIn 0.5s forwards; /* Fade-in animation */
+    }
+
+    /* Slide down animation */
+    @keyframes slideDown {
+        from {
+            height: 0;
+            opacity: 0; /* Start hidden */
+        }
+        to {
+            height: 300px; /* Final height */
+            opacity: 1; /* Fully visible */
+        }
+    }
+
+    /* Fade-in keyframes */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px); /* Slight upward movement */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0); /* Move to its final position */
+        }
+    }
+}
+/* Media query for screens 480px and below */
+@media screen and (max-width: 480px) {
+.nav-menu{
+    width: 100%;
+    right: -100%;
+}
+.nav-menu.active {
+    right: 0; /* Slide into view */
+    margin-top: 50px;
+    margin-right: 1px;
+}
+
+}
